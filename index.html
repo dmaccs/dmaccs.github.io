@@ -1,0 +1,259 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Dylan MacDonald - Software Engineer & Game Developer specializing in C++, Unreal Engine, and game systems.">
+  <title>Dylan MacDonald | Software Engineer</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+  <nav class="nav">
+    <div class="nav-inner">
+      <a href="#home" class="nav-tab active">home</a>
+      <a href="#about" class="nav-tab">about</a>
+      <a href="#experience" class="nav-tab">experience</a>
+      <a href="#projects" class="nav-tab">projects</a>
+      <a href="#contact" class="nav-tab">contact</a>
+    </div>
+  </nav>
+
+  <main>
+    <section id="home" class="hero">
+      <div class="hero-content">
+        <div class="hero-text">
+          <span class="hero-path">~/dylan-macdonald</span>
+          <h1>Dylan MacDonald</h1>
+          <p class="role">Software Engineer & Game Developer</p>
+          <p class="tagline">C++ | Unreal Engine | Game Systems</p>
+          <div class="hero-meta">
+            <span class="meta-item">
+              <span class="meta-icon">@</span>
+              <a href="mailto:dylmacd@shaw.ca">dylmacd@shaw.ca</a>
+            </span>
+            <span class="meta-item">
+              <span class="meta-icon">#</span>
+              <span>Vancouver, B.C.</span>
+            </span>
+          </div>
+          <div class="hero-links">
+            <a href="https://github.com/dmaccs" target="_blank" rel="noopener" class="hero-link">[github]</a>
+            <a href="https://www.linkedin.com/in/dylan-macdonaldcs/" target="_blank" rel="noopener" class="hero-link">[linkedin]</a>
+            <a href="tel:+12042987562" class="hero-link">[phone]</a>
+            <a href="#" class="hero-link" id="resume-btn">[resume]</a>
+          </div>
+        </div>
+        <div class="hero-image">
+          <img src="images/PFP.jpg" alt="Dylan MacDonald" class="profile-photo">
+        </div>
+      </div>
+    </section>
+
+    <section id="about" class="section">
+      <span class="section-label">// about</span>
+      <h2>About Me</h2>
+      <div class="about-content">
+        <p>I'm a software engineer and game developer currently working as a contract engineer at Archmage, building gameplay systems in C++ with Unreal Engine.</p>
+        <p>My background includes multiplayer simulation development and embedded systems optimization. I graduated from UBC with a B.Sc. in Computer Science and enjoy combining technical problem-solving with creative game design.</p>
+        <div class="skills-block">
+          <div class="skill-line">
+            <span class="skill-key">languages:</span>
+            <span class="skill-value">C++, C#, Python, SQL, Bash</span>
+          </div>
+          <div class="skill-line">
+            <span class="skill-key">tools:</span>
+            <span class="skill-value">Git, Unreal Engine, Godot, Visual Studio, JetBrains</span>
+          </div>
+          <div class="skill-line">
+            <span class="skill-key">focus:</span>
+            <span class="skill-value">Game Systems, Multiplayer, Real-time Simulation</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="experience" class="section">
+      <span class="section-label">// experience</span>
+      <h2>Work History</h2>
+
+      <article class="card">
+        <div class="card-header">
+          <h3>Archmage</h3>
+          <span class="card-date">2025 - present</span>
+        </div>
+        <p class="card-role">Software Engineer (Contract)</p>
+        <ul class="card-list">
+          <li>Building gameplay systems in C++ with Unreal Engine</li>
+          <li>Character state management and persistent AOE systems</li>
+          <li>Debugging movement controllers and UI tools</li>
+        </ul>
+      </article>
+
+      <article class="card">
+        <div class="card-header">
+          <h3>Offworld Defence Simulations</h3>
+          <span class="card-date">2021 - 2022</span>
+        </div>
+        <p class="card-role">Junior Software Engineer</p>
+        <ul class="card-list">
+          <li>Built multiplayer systems in UE4</li>
+          <li>Promoted from co-op to full engineer</li>
+          <li>Led C++ version upgrades and cross-team integrations</li>
+        </ul>
+        <div class="video-container">
+          <iframe
+            src="https://www.youtube.com/embed/ohdRSpESA9s"
+            title="Offworld Defence Simulations - Project Showcase"
+            loading="lazy"
+            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+            allowfullscreen>
+          </iframe>
+        </div>
+      </article>
+
+      <article class="card">
+        <div class="card-header">
+          <h3>Intel</h3>
+          <span class="card-date">2020 - 2021</span>
+        </div>
+        <p class="card-role">Software Co-op</p>
+        <ul class="card-list">
+          <li>Optimized embedded CPU simulations</li>
+          <li>Automation scripts for workflows and benchmarks</li>
+          <li>C++, Python, Bash development</li>
+        </ul>
+      </article>
+    </section>
+
+    <section id="projects" class="section">
+      <span class="section-label">// projects</span>
+      <h2>Side Projects</h2>
+
+      <article class="card">
+        <div class="card-header">
+          <h3>Bakery Battles</h3>
+          <a href="https://github.com/dmaccs/BakeryBattles" target="_blank" rel="noopener" class="card-link">github.com/dmaccs/BakeryBattles</a>
+        </div>
+        <p>2D roguelike autobattler in Godot/C#. Kitchen-themed strategy game with a CSV-to-JSON data pipeline for easy content management.</p>
+        <div class="tag-row">
+          <span class="tag tag-lang">C#</span>
+          <span class="tag tag-tool">Godot</span>
+          <span class="tag">Game Design</span>
+        </div>
+        <div class="video-container">
+          <iframe
+            src="https://www.youtube.com/embed/U0e4PMrbAQg"
+            title="Bakery Battles - Gameplay Demo"
+            loading="lazy"
+            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+            allowfullscreen>
+          </iframe>
+        </div>
+      </article>
+
+      <article class="card">
+        <div class="card-header">
+          <h3>Word Hunt</h3>
+          <a href="https://github.com/dmaccs/WordHunt" target="_blank" rel="noopener" class="card-link">github.com/dmaccs/WordHunt</a>
+        </div>
+        <p>2D word puzzle game with a 4x4 grid. Uses trie data structure + DFS for word generation and validation.</p>
+        <div class="tag-row">
+          <span class="tag tag-lang">C#</span>
+          <span class="tag tag-tool">Godot</span>
+          <span class="tag">Algorithms</span>
+        </div>
+        <div class="video-container">
+          <iframe
+            src="https://www.youtube.com/embed/-ZD6elaZnaY"
+            title="Word Hunt - Gameplay Demo"
+            loading="lazy"
+            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+            allowfullscreen>
+          </iframe>
+        </div>
+      </article>
+
+      <article class="card">
+        <div class="card-header">
+          <h3>Fishing Farming Sim</h3>
+        </div>
+        <p>2D fishing/farming RPG in Godot/C#. Collaborating with an artist. Features flexible item system, fishing minigame, and optimized inventory UI.</p>
+        <div class="tag-row">
+          <span class="tag tag-lang">C#</span>
+          <span class="tag tag-tool">Godot</span>
+          <span class="tag">Game Design</span>
+        </div>
+        <div class="video-container">
+          <iframe
+            src="https://www.youtube.com/embed/PcbP2OBf-lk"
+            title="Fishing Farming Sim - Development Preview"
+            loading="lazy"
+            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+            allowfullscreen>
+          </iframe>
+        </div>
+      </article>
+    </section>
+
+    <section id="education" class="section">
+      <span class="section-label">// education</span>
+      <h2>Education</h2>
+      <article class="card card-education">
+        <div class="card-header">
+          <h3>University of British Columbia</h3>
+          <span class="card-date">2024</span>
+        </div>
+        <p class="card-role">B.Sc. Computer Science</p>
+        <p class="edu-courses">Data Structures, Algorithms, Machine Learning, AI, Databases</p>
+      </article>
+    </section>
+
+    <section id="contact" class="section section-contact">
+      <span class="section-label">// contact</span>
+      <h2>Get in Touch</h2>
+      <div class="contact-block">
+        <div class="contact-line">
+          <span class="contact-key">email:</span>
+          <a href="mailto:dylmacd@shaw.ca">dylmacd@shaw.ca</a>
+        </div>
+        <div class="contact-line">
+          <span class="contact-key">github:</span>
+          <a href="https://github.com/dmaccs" target="_blank" rel="noopener">github.com/dmaccs</a>
+        </div>
+        <div class="contact-line">
+          <span class="contact-key">linkedin:</span>
+          <a href="https://www.linkedin.com/in/dylan-macdonaldcs/" target="_blank" rel="noopener">dylan-macdonaldcs</a>
+        </div>
+        <div class="contact-line">
+          <span class="contact-key">phone:</span>
+          <a href="tel:+12042987562">(204) 298-7562</a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <p>// built with html, css, js</p>
+  </footer>
+
+  <div class="modal-overlay" id="resume-modal">
+    <div class="modal">
+      <div class="modal-header">
+        <span class="modal-title">// resume.pdf</span>
+        <div class="modal-actions">
+          <a href="resume.pdf" download="Dylan-MacDonald-Resume.pdf" class="modal-btn">[download]</a>
+          <button class="modal-btn" id="modal-close">[close]</button>
+        </div>
+      </div>
+      <div class="modal-body">
+        <iframe src="resume.pdf" class="pdf-viewer"></iframe>
+      </div>
+    </div>
+  </div>
+
+  <script src="js/main.js"></script>
+</body>
+</html>
