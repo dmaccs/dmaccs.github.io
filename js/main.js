@@ -1,69 +1,86 @@
-(function() {
+(function () {
   'use strict';
 
-  const sections = document.querySelectorAll('section[id]');
-  const navTabs = document.querySelectorAll('.nav-tab');
+  /* --- nav scrollspy --- */
+  var sections = Array.prototype.slice.call(document.querySelectorAll('main section[id]'));
+  var links = Array.prototype.slice.call(document.querySelectorAll('.masthead nav a'));
+  var byHash = {};
+  links.forEach(function (a) { byHash[a.getAttribute('href')] = a; });
 
-  function updateActiveTab() {
-    const scrollY = window.scrollY;
+  if (sections.length && 'IntersectionObserver' in window) {
+    var spy = new IntersectionObserver(function (entries) {
+      entries.forEach(function (e) {
+        var link = byHash['#' + e.target.id];
+        if (!link) return;
+        if (e.isIntersecting) {
+          links.forEach(function (a) { a.classList.remove('is-active'); });
+          link.classList.add('is-active');
+        }
+      });
+    }, { rootMargin: '-45% 0px -50% 0px' });
+    sections.forEach(function (s) { spy.observe(s); });
+  }
 
-    sections.forEach(section => {
-      const sectionTop = section.offsetTop - 100;
-      const sectionHeight = section.offsetHeight;
-      const sectionId = section.getAttribute('id');
+  /* --- video facades: the YouTube iframe is only built on click --- */
+  document.querySelectorAll('.facade').forEach(function (btn) {
+    btn.addEventListener('click', function () {
+      var id = btn.getAttribute('data-video');
+      if (!id || btn.querySelector('iframe')) return;
+      var frame = document.createElement('iframe');
+      frame.src = 'https://www.youtube.com/embed/' + id + '?autoplay=1&rel=0';
+      frame.title = btn.getAttribute('aria-label') || 'Video';
+      frame.allow = 'accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture';
+      frame.setAttribute('allowfullscreen', '');
+      btn.appendChild(frame);
+      var play = btn.querySelector('.play');
+      if (play) play.remove();
+    });
+  });
 
-      if (scrollY >= sectionTop && scrollY < sectionTop + sectionHeight) {
-        navTabs.forEach(tab => {
-          tab.classList.remove('active');
-          if (tab.getAttribute('href') === '#' + sectionId) {
-            tab.classList.add('active');
-          }
-        });
-      }
+  /* --- resume sheet: PDF loads on open, not on page load --- */
+  var sheet = document.getElementById('resume-sheet');
+  var frame = document.getElementById('resume-frame');
+  var openBtn = document.getElementById('resume-open');
+  var closeBtn = document.getElementById('resume-close');
+
+  function openSheet(e) {
+    if (e) e.preventDefault();
+    if (frame && frame.getAttribute('src') === 'about:blank') frame.setAttribute('src', 'resume.pdf');
+    sheet.setAttribute('data-open', 'true');
+    document.body.style.overflow = 'hidden';
+    if (closeBtn) closeBtn.focus();
+  }
+
+  function closeSheet() {
+    sheet.setAttribute('data-open', 'false');
+    document.body.style.overflow = '';
+    if (openBtn) openBtn.focus();
+  }
+
+  if (sheet && openBtn) {
+    openBtn.addEventListener('click', openSheet);
+    if (closeBtn) closeBtn.addEventListener('click', closeSheet);
+    sheet.addEventListener('click', function (e) { if (e.target === sheet) closeSheet(); });
+    document.addEventListener('keydown', function (e) {
+      if (e.key === 'Escape' && sheet.getAttribute('data-open') === 'true') closeSheet();
     });
   }
 
-  let ticking = false;
-  window.addEventListener('scroll', function() {
-    if (!ticking) {
-      window.requestAnimationFrame(function() {
-        updateActiveTab();
-        ticking = false;
-      });
-      ticking = true;
-    }
-  });
+  /* --- theme toggle, remembered per viewer --- */
+  var toggle = document.getElementById('theme-toggle');
+  var root = document.documentElement;
 
-  updateActiveTab();
+  try {
+    var saved = localStorage.getItem('theme');
+    if (saved === 'dark' || saved === 'light') root.setAttribute('data-theme', saved);
+  } catch (err) { /* storage blocked - fall back to the OS setting */ }
 
-  const resumeBtn = document.getElementById('resume-btn');
-  const resumeModal = document.getElementById('resume-modal');
-  const modalClose = document.getElementById('modal-close');
-
-  if (resumeBtn && resumeModal) {
-    resumeBtn.addEventListener('click', function(e) {
-      e.preventDefault();
-      resumeModal.classList.add('active');
-      document.body.style.overflow = 'hidden';
-    });
-
-    modalClose.addEventListener('click', function() {
-      resumeModal.classList.remove('active');
-      document.body.style.overflow = '';
-    });
-
-    resumeModal.addEventListener('click', function(e) {
-      if (e.target === resumeModal) {
-        resumeModal.classList.remove('active');
-        document.body.style.overflow = '';
-      }
-    });
-
-    document.addEventListener('keydown', function(e) {
-      if (e.key === 'Escape' && resumeModal.classList.contains('active')) {
-        resumeModal.classList.remove('active');
-        document.body.style.overflow = '';
-      }
+  if (toggle) {
+    toggle.addEventListener('click', function () {
+      // the page is light unless it has explicitly been switched to dark
+      var next = root.getAttribute('data-theme') === 'dark' ? 'light' : 'dark';
+      root.setAttribute('data-theme', next);
+      try { localStorage.setItem('theme', next); } catch (err) { /* ignore */ }
     });
   }
 })();
